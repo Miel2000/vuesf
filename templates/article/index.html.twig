@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Articles :✅</h1>
+
+    {% for article in articles %}
+
+        <h1> {{ article.title }}</h1>
+        <p> {{ article.content }}</p>
+        <img src="{{ asset(article.image) }}" alt='ffs' >
+        <p> Ecrit le : {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
+        <a href="{{ path('article_show' , {'id': article.id}) }}" class="btn btn-primary"> Lire la suite</a>
+        
+    {% endfor %}
+    
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    <h1>Infos article :</h1>
+
+    <h1> {{ article.title }}</h1>
+    <p> {{ article.content }}</p>
+    <img src="{{ article.image }}" alt='ffs' >
+    <p> Ecrit le : {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/build/vue.js"></script>
+   
+</head>
+<body>
+    <div id="app">
+    {% block body %}
+        ${ message }
+    {% endblock %}
+    </div>
+    {# <script src="{{ asset('build/vue.js') }}"></script>
+    <script src="{{ asset('build/vendors~vue.js') }}"></script>
+    <script src="{{ asset('build/runtime.js') }}"></script> #}
+</body>
+</html>
+
