@@ -1,0 +1,65 @@
+Composer  : 2.0.6
+Symfony : 5.3.9
+npm 7.24.1
+node 14.17.6
+
+Lancer le projet : 
+
+    npm install
+    composer install 
+
+    file .env
+    l.30 DATABASE_URL="mysql://root:@127.0.0.1:3306/vuesf?serverVersion=5.7"
+    
+    php bin/console doctrine:database:create 
+                db name : vuejs
+            -> Vérifie dans wamp si la bdd est bien crée
+            
+
+    php bin/console doctrine:fixtures:load
+
+    php bin/console make:migration
+        -> yes
+
+    php bin/console doctrine:migrations:migrate
+        -> yes
+        -> Vérifie dans wamp si la table Article est bien crée et hydratée de donnée fixctives
+        
+    symfony server:start 
+
+    
+
+
+Route actuellement :
+
+    /articles -- ArticleController
+    /article/{id} -- ArticleController
+    /login -- SécurityController
+    /logout -- SécurityController
+    /admin -- DashboardController
+
+
+
+webpack.config.js
+Encore :
+    .enableVueLoader()
+    .enableSassLoader()
+    .enablePostCssLoader()
+
+
+    
+
+
+// Problématiques
+
+    Si back-office gérer avec EasyAdmin et le system d'API
+            -> Gestion de l'authentification complex
+                -> front + back
+                VueJS doit gérer l'envoi de JWT token +  le formulaire de login
+                Symfony doit gérer la réception du JWToken + définition des routes selon les roles défini dans le token
+
+    Si back-office géré avec EasyAdmin sans systeme d'API
+            -> Implique d'utiliser twig,
+                Possibilité d'utiliser twig via des data attribute binder,
+                 - on perds en cohérence de séparations des taches front et back puisque le vuejs consistera à appelé des variable arrivant de controller symfony (ex: $articles)dans  des data-attributes en dur dans du html.
+                 - on gagne du temps 

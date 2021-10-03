@@ -16,7 +16,7 @@ class HomeController extends AbstractController
         // session_start();
         // dd(unserialize($_SESSION['_sf2_attributes']['_security_main']));
 
-        return $this->render('base.html.twig', [
+        return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }

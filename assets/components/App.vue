@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>APP VUE HOME</h1>
-      <button @click="onClick"></button>
+      <button @click="onClick">clik</button>
   </div>
 </template>
 
