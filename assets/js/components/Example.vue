@@ -10,45 +10,53 @@
 export default {
 	data(){
 		return{
-			message: "ceci est le message"
+			message: "ceci est le message",
+			fetchOptions: { 
+				method: 'GET',
+				headers: new Headers(),
+				mode: 'cors',
+				cache: 'default' 
+			}
 		}
 	},
-	created(){
+	mounted(){
+		// 
+		// this.goFetchAll();
+		// this.goFetch("articles");
 
-		const fetchOptions = { 
-			method: 'GET',
-			headers: new Headers(),
-			mode: 'cors',
-			cache: 'default' 
-		};
-		
 
-		fetch(`${window.origin}/articles`, fetchOptions)
-			.then(response => {
+		this.goFetch("article/1");
 
-				response.json()
-					.then(function(json) {
-					
-						// traitement du JSON
-						console.log("ok tout est resolved : json = ", json);
-
-					})
-					.catch(error => {
-
-						console.log("la data n'est pas en json");
-
-					});
-
-			})
-			.catch(error => {
-
-			console.log("error du fetch : ", error);
-
-		});
 
 	},
 	methods: {
 		// 
+		goFetch( url ){
+
+			fetch(`${window.origin}/${url}`, this.fetchOptions)
+				.then(response => {
+
+					response.json()
+						.then(function(json) {
+						
+							// traitement du JSON
+							console.log("ok tout est resolved : json = ", json);
+
+						})
+						.catch(error => {
+
+							console.log("la data n'est pas en json");
+
+						});
+
+				})
+				.catch(error => {
+
+				console.log("error du fetch : ", error);
+
+			});
+
+		}
 	}
 	
 }
