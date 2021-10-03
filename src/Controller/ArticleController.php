@@ -33,9 +33,11 @@ class ArticleController extends AbstractController
      */
     public function showOneArticle(Article $article): Response
     {
+        $serializer = new Serializer([new ObjectNormalizer()]);
+       
 
-        return $this->render('article/id/index.html.twig', [
-            'article' =>  $article
+        return new JsonResponse([
+            'articles' => $serializer->normalize($article)
         ]);
     }
 }
