@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
@@ -16,12 +19,12 @@ class ArticleController extends AbstractController
     public function index(ArticleRepository $repo): Response
     {
 
-
+        $serializer = new Serializer([new ObjectNormalizer()]);
         $articles = $repo->findAll();
+       
 
-
-        return $this->render('article/index.html.twig', [
-            'articles' =>  $articles ,
+        return new JsonResponse([
+            'articles' =>  $serializer->normalize($articles) ,
         ]);
     }
 
