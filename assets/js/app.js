@@ -8,5 +8,7 @@ import Example from './components/Example'
 */
 new Vue({
   el: '#app',
-  components: {Example}
+  components: {
+    Example
+  }
 });
