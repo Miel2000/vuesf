@@ -15,9 +15,6 @@ Lancer le projet :
                 db name : vuejs
             -> Vérifie dans wamp si la bdd est bien crée
             
-
-    php bin/console doctrine:fixtures:load
-
     php bin/console make:migration
         -> yes
 
@@ -25,13 +22,19 @@ Lancer le projet :
         -> yes
         -> Vérifie dans wamp si la table Article est bien crée et hydratée de donnée fixctives
         
+    php bin/console doctrine:fixtures:load
+
+
     symfony server:start 
+
+Implémentation VueJS:
+    https://gist.github.com/emicheldev/971c4340132e4291773216b583788ff4
 
     
 
 
 Route actuellement :
-
+    /home -- HomeController
     /articles -- ArticleController
     /article/{id} -- ArticleController
     /login -- SécurityController
