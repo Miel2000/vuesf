@@ -2,7 +2,9 @@
 <div>
 	<p>
 		example example component message : {{ message }}
-		</p>
+	</p>
+	<button @click="fetchAll">FetchAll</button>
+	<button @click="fetchOne">FetchOne</button>
 </div>
 </template>
 
@@ -21,16 +23,9 @@ export default {
 	},
 	mounted(){
 		// 
-		// this.goFetchAll();
-		// this.goFetch("articles");
-
-
-		this.goFetch("article/1");
-
-
 	},
 	methods: {
-		// 
+
 		goFetch( url ){
 
 			fetch(`${window.origin}/${url}`, this.fetchOptions)
@@ -56,6 +51,18 @@ export default {
 
 			});
 
+		},
+
+		fetchAll(){
+
+			this.goFetch("articles");
+
+		},
+
+		fetchOne(){
+
+			this.goFetch("article/3");
+			
 		}
 	}
 	

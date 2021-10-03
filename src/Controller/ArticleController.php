@@ -37,7 +37,7 @@ class ArticleController extends AbstractController
        
 
         return new JsonResponse([
-            'articles' => $serializer->normalize($article)
+            'article' => $serializer->normalize($article)
         ]);
     }
 }
